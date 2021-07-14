@@ -7,6 +7,8 @@ import { BarraNavegacionSuperiorComponent } from './publico/PaginaMaestra/barra-
 import { MenuLateralComponent } from './publico/PaginaMaestra/menu-lateral/menu-lateral.component';
 import { PieDePaginaComponent } from './publico/PaginaMaestra/pie-de-pagina/pie-de-pagina.component';
 import { DefaultComponent } from './publico/home/default/default.component';
+import { Error404Component } from './publico/error404/error404.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,11 +17,13 @@ import { DefaultComponent } from './publico/home/default/default.component';
     BarraNavegacionSuperiorComponent,
     MenuLateralComponent,
     PieDePaginaComponent,
-    DefaultComponent
+    DefaultComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

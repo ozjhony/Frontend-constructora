@@ -20,6 +20,10 @@ const routes: Routes = [
     path:'parametrizacion',
     loadChildren:()=>import('./modulos/parametrizacion/parametrizacion.module').then(x=>x.ParametrizacionModule)
   },
+  {
+    path:'usuario',
+    loadChildren:()=>import('./modulos/usuario/usuario.module').then(x=>x.UsuarioModule)
+  },
   //ultimo
   {
     path:'**',
