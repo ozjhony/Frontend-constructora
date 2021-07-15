@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren:()=>import('./modulos/seguridad/seguridad.module').then(m=>m.SeguridadModule)
   },
   {
-    path:'parametrizacion',
+    path:'parametros',
     loadChildren:()=>import('./modulos/parametrizacion/parametrizacion.module').then(x=>x.ParametrizacionModule)
   },
   {

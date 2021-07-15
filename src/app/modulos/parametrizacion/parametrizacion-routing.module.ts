@@ -75,11 +75,11 @@ const routes: Routes = [
     component:CrearPaisComponent
   },
   {
-    path: 'editar-pais',
+    path: 'editar-pais/:codigo',
     component:EditarPaisComponent
   },
   {
-    path: 'eliminar-pais',
+    path: 'eliminar-pais/:codigo',
     component:EliminarPaisComponent
   },
   {
