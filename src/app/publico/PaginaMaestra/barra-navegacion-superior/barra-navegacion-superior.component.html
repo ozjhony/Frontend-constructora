@@ -6,16 +6,16 @@
       
       <!-- <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudades">Ciudades</a></li> -->
      <!--  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-habilidades">Habilidad</a></li> -->
-      <li><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
-      <li><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
     </ul>
   </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
 
-  <li><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
-  <li><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+  <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
 </ul>
 
 

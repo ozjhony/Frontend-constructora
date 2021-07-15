@@ -19,18 +19,17 @@ export class IniciarSesionComponent implements OnInit {
     private servicioSeguridad: SeguridadService,
     private router: Router) { }
 
+    ngOnInit(): void {
+      this.ConstruirFormulario();
+    }
+
   ConstruirFormulario() {
      this.fgValidador = this.fb.group({
      nombre_usuario: ['alejandrojpg1996@gmail.com', [Validators.required, Validators.email]],
-     clave: ['91083b5003378d451c9facc9e03dee0b', [Validators.required, Validators.min(3)]]
+     clave: ['', [Validators.required, Validators.min(3)]]
       });
    }
 
-
-
-  ngOnInit(): void {
-    this.ConstruirFormulario();
-  }
 
   get ObtenerFgvalidador() {
     return this.fgValidador.controls;
@@ -40,20 +39,22 @@ export class IniciarSesionComponent implements OnInit {
     if (this.fgValidador.invalid) {
       alert("Formulario inválido")
     } else {
-      let usuario = this.ObtenerFgvalidador.nombre_usuario.value;
+      let nombre_usuario = this.ObtenerFgvalidador.nombre_usuario.value;
       let clave = this.ObtenerFgvalidador.clave.value;
-      let claveCifrada = crypto.MD5(clave).toString();
+      //let claveCifrada = crypto.MD5(clave).toString();
       let modelo = new UserLogModelo();
-      modelo.nombre_usuario = usuario;
-      modelo.clave = claveCifrada;
+      modelo.nombre_usuario = nombre_usuario;
+      modelo.clave = clave;
       this.servicioSeguridad.VerificarUsuario(modelo).subscribe(
-        (datos: UserLogModelo) => {
-          this.servicioSeguridad.AlmacenarDatosSesionEnLocal(datos);
-          this.router.navigate(["/inicio"]);
+       (datos: UserLogModelo) => {
+            this.servicioSeguridad.AlmacenarDatosSesionEnLocal(datos);
+            this.router.navigate(["/inicio"]);
         },
         (error) => {
           alert("Datos inválidos");
           console.log(error);
+          console.log(modelo.nombre_usuario);
+          console.log(modelo.clave);
         }
       );
     }

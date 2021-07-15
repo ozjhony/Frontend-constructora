@@ -8,5 +8,5 @@ export class UserLogModelo{
     tipoUsuarioId?: String;
     user?: UsuarioModule;
     tk?: String;
-    isLoggedIn: boolean = false;
+    isLoggedIn?: boolean = false;
 }

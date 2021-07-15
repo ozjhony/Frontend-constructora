@@ -16,6 +16,7 @@ export class SeguridadService {
 
   constructor(private http: HttpClient) {
     this.VerificarSesion();
+    console.log(this.url);
    }
 
    RefrescarDatosSesion(usuarioModelo: UserLogModelo) {
@@ -32,17 +33,18 @@ export class SeguridadService {
   }
 
    VerificarUsuario(modelo: UserLogModelo): Observable<any> {
-    return this.http.post<any>(
-      `${this.url}/identificar-usuario`,
+    return this.http.post<any>(`http://localhost:3000/identificar-usuario`,
       {
         nombre_usuario: modelo.nombre_usuario,
         clave: modelo.clave
+        
       },
       {
-        headers: new HttpHeaders({
-
-        })
-      });
+        headers: new HttpHeaders({})
+      }
+      
+      ); 
+      
   }
 
   AlmacenarDatosSesionEnLocal(usuarioModelo: UserLogModelo): Boolean {
@@ -57,4 +59,37 @@ export class SeguridadService {
       return true;
     }
   }
+
+  ObtenerDatosSesion() {
+    return this.datosDeSesion.asObservable();
+  }
+
+  ObtenerToken() {
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let obj: UserLogModelo = JSON.parse(datos);
+      return obj.tk;
+    } else {
+      return "";
+    }
+  }
+
+  
+
+  ValidarSesionPorToken():boolean {
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let obj: UserLogModelo = JSON.parse(datos);
+      // invocar al backend 
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  RemoverLocalStorage() {
+    let datos = localStorage.removeItem("session-data");
+    this.RefrescarDatosSesion(new UserLogModelo());
+  }
+
 }
