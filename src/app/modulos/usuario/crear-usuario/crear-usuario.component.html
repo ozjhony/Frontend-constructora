@@ -1,5 +1,126 @@
+<br>
+<br>
 
-
+<fieldset>
+    <legend>Register Form</legend>
+    <div class="row">
+        <form [formGroup]="fgvalidator" class="col s12" id="reg-form">
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <input id="nombres" formControlName="nombres" type="text">
+                    <label for="nombres">nombres</label>
+                    <div class="warning-validator" *ngIf="fgv.nombres.errors && (fgv.nombres.dirty || fgv.nombres.touched)">
+                        <strong *ngIf="fgv.nombres.errors.required">
+                            This field is required.
+                        </strong>
+                        <strong *ngIf="fgv.nombres.errors.minlength">
+                            This field must be at least {{nombresMinLength}} long.
+                        </strong>
+                    </div>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input formControlName="apellido" id="apellido" type="text">
+                    <label for="apellido">apellido</label>
+                    <div class="warning-validator" *ngIf="fgv.apellido.errors && (fgv.apellido.dirty || fgv.apellido.touched)">
+                        <strong *ngIf="fgv.apellido.errors.required">
+                            This field is required.
+                        </strong>
+                        <strong *ngIf="fgv.apellido.errors.minlength">
+                            This field must be at least 12 long.
+                        </strong>
+                        <strong *ngIf="fgv.apellido.errors.maxlength">
+                            This field must be maximum 14 long.
+                        </strong>
+                    </div>
+                </div>
+                <div class="input-field col s8">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <input formControlName="documento" id="documento" type="text">
+                    <label for="documento">documento</label>
+                    <div class="warning-validator" *ngIf="fgv.documento.errors && (fgv.documento.dirty || fgv.documento.touched)">
+                        <strong *ngIf="fgv.documento.errors.required">
+                            This field is required.
+                        </strong>
+                        <strong *ngIf="fgv.documento.errors.minlength">
+                            This field must be at least 3 characters long.
+                        </strong>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">phone</i>
+                    <input formControlName="telefono" id="telefono" type="text">
+                    <label for="telefono">telefono</label>
+                    <div class="warning-validator" *ngIf="fgv.telefono.errors && (fgv.telefono.dirty || fgv.telefono.touched)">
+                        <strong *ngIf="fgv.telefono.errors.required">
+                            This field is required.
+                        </strong>
+                        <strong *ngIf="fgv.telefono.errors.minlength">
+                            This field must be at least 2 characters long.
+                        </strong>
+                    </div>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input formControlName="ciudad" id="ciudad" type="text">
+                    <label for="ciudad">ciudad</label>
+                    <div class="warning-validator" *ngIf="fgv.ciudad.errors && (fgv.ciudad.dirty || fgv.ciudad.touched)">
+                        <strong *ngIf="fgv.ciudad.errors.required">
+                            This field is required.
+                        </strong>
+                        <strong *ngIf="fgv.ciudad.errors.minlength">
+                            This field must be at least 2 characters long.
+                        </strong>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">email</i>
+                    <input formControlName="correo" id="correo" type="text">
+                    <label for="correo">correo</label>
+                    <div *ngIf="fgv.correo.errors && (fgv.correo.dirty || fgv.correo.touched)">
+                        <strong *ngIf="fgv.correo.errors.required">
+                            This field is required.
+                        </strong>
+                        <strong *ngIf="fgv.correo.errors.correo">
+                            This field must be a correct correo format.
+                        </strong>
+                    </div>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">map</i>
+                    <input formControlName="tipo_usuario" id="tipo_usuario" type="text">
+                    <label for="tipo_usuario">rol de usuario</label>
+                    <div class="warning-validator" *ngIf="fgv.tipo_usuario.errors && (fgv.tipo_usuario.dirty || fgv.tipo_usuario.touched)">
+                        <strong *ngIf="fgv.tipo_usuario.errors.required">
+                            This field is required.
+                        </strong>
+                        <strong *ngIf="fgv.tipo_usuario.errors.minlength">
+                            This field must be at least 3 characters long.
+                        </strong>
+                    </div>
+                </div>
+               
+                
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <button (click)="UsuarioRegisterFn()" class="btn btn-large btn-register waves-effect waves-light" type="button"
+                        name="action">Register
+                        <i class="material-icons right">done</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
+<br>
+<br>
 
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 
@@ -26,17 +147,17 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-user"></i> </span>
              </div>
-            <input formControlName="documento" name="" class="form-control" placeholder="documento" type="text">
+            <input formControlName="nombreso" name="" class="form-control" placeholder="nombreso" type="text">
         </div>
         <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
              </div>
-            <input formControlName="correo" name="" class="form-control" placeholder="correo electronico" type="email">
+            <input formControlName="correo" name="" class="form-control" placeholder="correo electronico" type="correo">
         </div> 
         <div class="form-group input-group">
             <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                <span class="input-group-text"> <i class="fa fa-apellido"></i> </span>
             </div>
             <select formControlName="codigoPais" class="custom-select" style="max-width: 120px;">
                 <option selected="1">+57</option>
@@ -66,5 +187,7 @@
     </form>
     </article>
     </div>  -->
+
+  
     
 

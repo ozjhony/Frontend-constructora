@@ -8,6 +8,7 @@
      <!--  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-habilidades">Habilidad</a></li> -->
       <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="usuario/registro">Registrarse</a></li>
     </ul>
   </div>
 </nav>
@@ -16,6 +17,7 @@
 
   <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
   <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
+  <li *ngIf="!isLoggedIn"><a routerLink="usuario/registro">Registrarse</a></li>
 </ul>
 
 

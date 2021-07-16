@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import{UsuarioModel}from '../../../modelos/usuario.model';
 
@@ -15,7 +16,8 @@ export class CrearUsuarioComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private service:UsuarioService
+    private service:UsuarioService,
+    private router: Router
   ) {
 
   }
@@ -28,13 +30,12 @@ export class CrearUsuarioComponent implements OnInit {
    FormBuilding(){
      
     this.fgvalidator=this.fb.group({
-      nombre: ['',[Validators.required, Validators.minLength(5)]],
+      nombres: ['',[Validators.required, Validators.minLength(5)]],
       apellido: ['',[Validators.required, Validators.minLength(10)]],
       documento: ['',[Validators.required, Validators.minLength(7)]],
       correo: ['',[Validators.required, Validators.email]],
       telefono: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(14)]],
       ciudad: ['',[Validators.required, Validators.minLength(3)]],
-      codigoPais: [],
       tipo_usuario: ['',[Validators.required, Validators.minLength(5)]]
     })
    }
@@ -45,10 +46,28 @@ export class CrearUsuarioComponent implements OnInit {
     }
     else{
       let model=this.getUsuarioData();
-      this.service.UsuarioRegister(model);
+      this.service.usuarioRegistering(model);
       
     }
    }
+
+   UsuarioRegisterFn() {
+    if (this.fgvalidator.invalid) {
+      //alert("Invalid form.");
+    } else {
+      //showMessage("Registering...");
+      let model = this.getUsuarioData();
+      this.service.usuarioRegistering(model).subscribe(
+        data => {
+          alert("Register succesfully, you can find your password in your email inbox.");
+          this.router.navigate(['/security/login']);
+        },
+        error => {
+          alert("Error registering.");
+        }
+      );
+    }
+  }
 
    getUsuarioData(): UsuarioModel{
      let model= new UsuarioModel();

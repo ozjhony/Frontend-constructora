@@ -1,18 +1,29 @@
 import { Injectable } from '@angular/core';
 import { UsuarioModel } from '../modelos/usuario.model';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
+import { Observable } from 'rxjs';
+import { DatosGenerales } from '../config/datos.generales';
+import { ServiceConfig } from '../config/service-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
+  entity = 'usuarios';
+  url: String = DatosGenerales.url;
+
   constructor(
-   private http:HttpClient
+    private http: HttpClient
   ) { }
 
-
-  UsuarioRegister(model:UsuarioModel){
-
+  /**
+   * Method to call usuario POST in backend
+   * @param usuario usuario data to save
+   */
+  usuarioRegistering(usuario: UsuarioModel): Observable<UsuarioModel> {
+    return this.http.post<UsuarioModel>(`${ServiceConfig.BASE_URL}${this.entity}`, usuario, {
+      headers: new HttpHeaders({})
+    });
   }
 }
