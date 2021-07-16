@@ -32,7 +32,8 @@ export class CiudadService {
     return this.http.post<CiudadModelo>(
       `${this.url}/ciudades`,
       {
-        nombre: modelo.nombre
+        nombre: modelo.nombre,
+        paisId: modelo.paisId
       },
       {
         headers: new HttpHeaders({

@@ -24,6 +24,10 @@ const routes: Routes = [
     path:'usuario',
     loadChildren:()=>import('./modulos/usuario/usuario.module').then(x=>x.UsuarioModule)
   },
+  {
+    path:'clientes',
+    loadChildren:()=>import('./modulos/clientes/clientes.module').then(x=>x.ClientesModule)
+  },
   //ultimo
   {
     path:'**',

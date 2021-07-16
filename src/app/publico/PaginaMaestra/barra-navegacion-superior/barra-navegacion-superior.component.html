@@ -1,5 +1,5 @@
 <nav>
-  <div class="nav-wrapper">
+  <div class="nav-wrapper black">
     <a routerLink="/" class="brand-logo">Logo</a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
@@ -8,7 +8,9 @@
      <!--  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-habilidades">Habilidad</a></li> -->
       <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="usuario/registro">Registrarse</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="usuario/registro">Registrar usuario</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="clientes/registrar-cliente">Registrar cliente</a></li>
+      <li *ngIf="isLoggedIn">{{suscripcion.nombre_usuario}}</li>
     </ul>
   </div>
 </nav>

@@ -31,7 +31,7 @@ const routes: Routes = [
     component:EditarBloqueComponent
   },
   {
-    path: 'eliminar-bloque',
+    path: 'eliminar-bloque/:codigo',
     component:EliminarBloqueComponent
   },
   {
@@ -43,11 +43,11 @@ const routes: Routes = [
     component:CrearCiudadComponent
   },
   {
-    path: 'editar-ciudad',
+    path: 'editar-ciudad/:codigo',
     component:EditarCiudadComponent
   },
   {
-    path: 'eliminar-ciudad',
+    path: 'eliminar-ciudad/:codigo',
     component:EliminarCiudadComponent
   },
   {
@@ -59,11 +59,11 @@ const routes: Routes = [
     component:CrearInmuebleComponent
   },
   {
-    path: 'editar-inmueble',
+    path: 'editar-inmueble/:codigo',
     component:EditarInmuebleComponent
   },
   {
-    path: 'eliminar-inmueble',
+    path: 'eliminar-inmueble/:codigo',
     component:EliminarInmuebleComponent
   },
   {
@@ -91,11 +91,11 @@ const routes: Routes = [
     component:CrearProyectosComponent
   },
   {
-    path: 'editar-proyectos',
+    path: 'editar-proyectos/:codigo',
     component:EditarProyectosComponent
   },
   {
-    path: 'eliminar-proyectos',
+    path: 'eliminar-proyectos/:codigo',
     component:EliminarProyectosComponent
   },
   {
