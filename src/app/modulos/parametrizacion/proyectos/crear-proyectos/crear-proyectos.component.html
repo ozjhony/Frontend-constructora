@@ -1,1 +1,55 @@
-<p>crear-proyectos works!</p>
+<br>
+<br>
+<br>
+
+<div class="row">
+    <form class="col s12"  [formGroup]="fgValidador" (ngSubmit)="GuardarRegistro()" >
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="nombre" id="nombre" type="text" class="validate">
+                <label for="nombre">Nombre</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="descripcion" id="nombre" type="text" class="validate">
+                <label for="nombre">descripcion</label>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="nombre" id="nombre" type="text" class="validate">
+                <label for="nombre">Nombre</label>
+            </div>
+        </div> -->
+        
+        <br>
+        <div class="row">
+            <div class="input-field col s12">
+                <select class="browser-default" formControlName="ciudadId">
+                    <option *ngFor="let ciudad of ListaCiudad" type="number" value='{{ciudad.codigo}}'>{{ciudad.nombre}}</option>
+                </select>
+            </div>
+        </div>
+     
+        <div class="row">
+            <div class="col s12">
+
+                <button [disabled]="ObtenerFgValidador.nombre.errors"  class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                    <i class="material-icons right">save</i>
+                </button>
+                &nbsp;&nbsp;
+                <a class="waves-effect red waves-light btn" routerLink="/parametros/listar-ciudad"><i class="material-icons left">cancel</i>Cancelar</a>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+

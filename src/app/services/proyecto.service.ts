@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
-import { CiudadModelo } from '../modelos/ciudad.modelo';
+import { ProyectoModelo } from '../modelos/proyecto.modelo';
 import { SeguridadService } from './seguridad.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CiudadService {
+export class ProyectoService {
 
   url: String = DatosGenerales.url;
   token?: String = "";
@@ -22,21 +22,23 @@ export class CiudadService {
     this.token = this.servicioSeguridad.ObtenerToken();  
   }
 
-  ListarRegistros(): Observable<CiudadModelo[]> {
-    return this.http.get<CiudadModelo[]>(`${this.url}/ciudades`);
+  ListarRegistros(): Observable<ProyectoModelo[]> {
+    return this.http.get<ProyectoModelo[]>(`${this.url}/proyectos`);
   }
 
 
-  BuscarRegistro(codigo: number): Observable<CiudadModelo> {
-    return this.http.get<CiudadModelo>(`${this.url}/ciudades/${codigo}`);
+  BuscarRegistro(codigo: number): Observable<ProyectoModelo> {
+    return this.http.get<ProyectoModelo>(`${this.url}/proyectos/${codigo}`);
   }
 
-  AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
-    return this.http.post<CiudadModelo>(
-      `${this.url}/ciudades`,
+  AlmacenarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {
+    return this.http.post<ProyectoModelo>(
+      `${this.url}/proyectos`,
       {
         nombre: modelo.nombre,
-        paisId: modelo.paisId
+        descripcion: modelo.descripcion,
+        imagen:modelo.imagen,
+        ciudadId: modelo.ciudadId,
       },
       {
         headers: new HttpHeaders({
@@ -46,12 +48,14 @@ export class CiudadService {
   }
 
 
-  ModificarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {
-    return this.http.put<CiudadModelo>(
-      `${this.url}/ciudades/${modelo.codigo}`,
+  ModificarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {
+    return this.http.put<ProyectoModelo>(
+      `${this.url}/proyectos/${modelo.codigo}`,
       {
         nombre: modelo.nombre,
-        paisId: modelo.paisId
+        descripcion: modelo.descripcion,
+        imagen:modelo.imagen,
+        ciudadId: modelo.ciudadId,
       },
       {
         headers: new HttpHeaders({
@@ -60,15 +64,13 @@ export class CiudadService {
       });
   }
 
-  EliminarRegistro(codigo: number): Observable<CiudadModelo> {
-    return this.http.delete<CiudadModelo>(
-      `${this.url}/ciudades/${codigo}`,
+  EliminarRegistro(codigo: number): Observable<ProyectoModelo> {
+    return this.http.delete<ProyectoModelo>(
+      `${this.url}/proyectos/${codigo}`,
       {
         headers: new HttpHeaders({
           "Authorization":`Bearer ${this.token}`
         })
       });
   }
-
-
 }

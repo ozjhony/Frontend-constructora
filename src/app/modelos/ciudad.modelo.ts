@@ -3,7 +3,7 @@ import { PaisModelo } from "./pais.modelo";
 export class CiudadModelo{
     codigo?: number;
     nombre?: String;
-    paisId?: number;
+    paisId: number;
     psId?:number;
     pais?:PaisModelo;
 }
