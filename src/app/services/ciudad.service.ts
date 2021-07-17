@@ -12,6 +12,7 @@ export class CiudadService {
 
   url: String = DatosGenerales.url;
   token?: String = "";
+  
 
 
   constructor(private http: HttpClient, 

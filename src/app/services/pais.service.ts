@@ -12,11 +12,14 @@ export class PaisService {
 
   url: String = DatosGenerales.url;
   token?: String = "";
+  entity='pais';
 
   constructor(private http: HttpClient, 
     private servicioSeguridad: SeguridadService) {
     this.token = this.servicioSeguridad.ObtenerToken();  
   }
+
+
   
 
   ListarRegistros(): Observable<PaisModelo[]> {
