@@ -8,5 +8,5 @@ export class ClienteModelo {
     correo: string;
     celular: string;
     direccion: string;
-    ciudadId?: string;
+    ciudadId?: number;
 }
