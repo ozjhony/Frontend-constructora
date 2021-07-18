@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DatosGenerales } from '../config/datos.generales';
+import { ServiceConfig } from '../config/service-config';
+import { ResetearContrasenaModelo } from '../modelos/resetear-contrasena.modelo';
 import { UserLogModelo } from '../modelos/userlog.modelo';
 
 
@@ -72,6 +74,12 @@ export class SeguridadService {
     } else {
       return "";
     }
+  }
+
+  PasswordReset(data: ResetearContrasenaModelo): Observable<any> {
+    return this.http.post<any>(`${ServiceConfig.BASE_URL}reset-password`, data, {
+      headers: new HttpHeaders({})
+    });
   }
 
   
