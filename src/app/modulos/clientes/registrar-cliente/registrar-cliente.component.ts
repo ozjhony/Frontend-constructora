@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { ClienteModelo } from 'src/app/modelos/cliente.modelo';
+import { CiudadService } from 'src/app/services/ciudad.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
@@ -12,13 +14,16 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class RegistrarClienteComponent implements OnInit {
 
   fgValidador: FormGroup = new FormGroup({});
+  ListaCiudad: CiudadModelo[];
 
   constructor(private fb: FormBuilder,
     private servicio: ClienteService,
-    private router: Router) { }
+    private router: Router,
+    private servicioCiudad: CiudadService) { }
 
   ngOnInit(): void {
     this.ConstruirFormulario();
+    this.getAllCiudades();
   }
 
   ConstruirFormulario() {
@@ -66,5 +71,18 @@ export class RegistrarClienteComponent implements OnInit {
       }
     );
   }
+
+  getAllCiudades() {
+    this.servicioCiudad.ListarRegistros().subscribe(
+      data => {
+        this.ListaCiudad = data;
+        //setTimeout(initSelect(), 500);
+      },
+      error => {
+        console.error("Error loading ciudades");
+      }
+    );
+  }
+
 
 }

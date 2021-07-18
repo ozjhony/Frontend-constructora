@@ -21,6 +21,19 @@ export class SeguridadService {
     console.log(this.url);
    }
 
+   BuscarRegistro(id: String): Observable<UserLogModelo> {
+    return this.http.get<UserLogModelo>(`${this.url}/userlogs/${id}`);
+  }
+
+   ModificarRegistro(modelo: UserLogModelo): Observable<UserLogModelo> {
+    return this.http.put<UserLogModelo>(
+      `${this.url}/userlogs/${modelo.id}`,
+      {
+        clave: modelo.clave,
+        id:modelo.id
+      });
+  }
+
    RefrescarDatosSesion(usuarioModelo: UserLogModelo) {
     this.datosDeSesion.next(usuarioModelo);
   }

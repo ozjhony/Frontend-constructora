@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
+import { TipoUsuarioModelo } from 'src/app/modelos/tipoUsuario.modelo';
+import { CiudadService } from 'src/app/services/ciudad.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import{UsuarioModel}from '../../../modelos/usuario.model';
 
@@ -10,14 +13,17 @@ import{UsuarioModel}from '../../../modelos/usuario.model';
   styleUrls: ['./crear-usuario.component.css']
 })
 export class CrearUsuarioComponent implements OnInit {
+   
 
+  ListaCiudad: CiudadModelo[];
 
   fgvalidator: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private service:UsuarioService,
-    private router: Router
+    private router: Router,
+    private servicioCiudad: CiudadService,
   ) {
 
   }
@@ -25,13 +31,15 @@ export class CrearUsuarioComponent implements OnInit {
   ngOnInit(): void {
 
    this.FormBuilding();
+  
+   this.getAllCiudades();
   }
 
    FormBuilding(){
      
     this.fgvalidator=this.fb.group({
       nombres: ['',[Validators.required, Validators.minLength(5)]],
-      apellido: ['',[Validators.required, Validators.minLength(10)]],
+      apellido: ['',[Validators.required, Validators.minLength(3)]],
       documento: ['',[Validators.required, Validators.minLength(7)]],
       correo: ['',[Validators.required, Validators.email]],
       telefono: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(14)]],
@@ -85,6 +93,20 @@ export class CrearUsuarioComponent implements OnInit {
    get fgv(){
      return this.fgvalidator.controls;
    }
+
+   
+
+   getAllCiudades() {
+    this.servicioCiudad.ListarRegistros().subscribe(
+      data => {
+        this.ListaCiudad = data;
+        //setTimeout(initSelect(), 500);
+      },
+      error => {
+        console.error("Error loading ciudades");
+      }
+    );
+  }
 
   
 

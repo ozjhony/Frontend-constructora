@@ -44,8 +44,9 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input formControlName="ciudadId" id="ciudadId" type="number" class="validate">
-                <label for="ciudadId">CiudadId</label>
+                <select class="browser-default" formControlName="ciudadId">
+                    <option *ngFor="let ciudad of ListaCiudad" type="number" value='{{ciudad.codigo}}'>{{ciudad.nombre}}</option>
+                </select>
             </div>
         </div>
         <div class="row">

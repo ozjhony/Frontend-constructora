@@ -20,7 +20,7 @@ export class EditarProyectosComponent implements OnInit {
     private servicio: ProyectoService,
     private router: Router,
     private route: ActivatedRoute,
-    private servicioPais:CiudadService) {
+    private servicioCiudad:CiudadService) {
   }
 
   ConstruirFormulario() {
@@ -62,7 +62,7 @@ export class EditarProyectosComponent implements OnInit {
   }
 
   getAllCiudades() {
-    this.servicioPais.ListarRegistros().subscribe(
+    this.servicioCiudad.ListarRegistros().subscribe(
       data => {
         this.ListaCiudad = data;
         //setTimeout(initSelect(), 500);

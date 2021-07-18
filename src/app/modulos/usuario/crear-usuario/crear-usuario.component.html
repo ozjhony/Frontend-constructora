@@ -28,7 +28,7 @@
                             This field is required.
                         </strong>
                         <strong *ngIf="fgv.apellido.errors.minlength">
-                            This field must be at least 12 long.
+                            This field must be at least 4 long.
                         </strong>
                         <strong *ngIf="fgv.apellido.errors.maxlength">
                             This field must be maximum 14 long.
@@ -65,18 +65,12 @@
                     </div>
                 </div>
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input formControlName="ciudad" id="ciudad" type="text">
-                    <label for="ciudad">ciudad</label>
-                    <div class="warning-validator" *ngIf="fgv.ciudad.errors && (fgv.ciudad.dirty || fgv.ciudad.touched)">
-                        <strong *ngIf="fgv.ciudad.errors.required">
-                            This field is required.
-                        </strong>
-                        <strong *ngIf="fgv.ciudad.errors.minlength">
-                            This field must be at least 2 characters long.
-                        </strong>
-                    </div>
+                    <select class="browser-default" formControlName="ciudad">
+                        <option *ngFor="let ciudad of ListaCiudad">{{ciudad.nombre}}</option>
+                    </select>
+                    
                 </div>
+
             </div>
             <div class="row">
                 <div class="input-field col s4">
@@ -93,17 +87,11 @@
                     </div>
                 </div>
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">map</i>
-                    <input formControlName="tipo_usuario" id="tipo_usuario" type="text">
-                    <label for="tipo_usuario">rol de usuario</label>
-                    <div class="warning-validator" *ngIf="fgv.tipo_usuario.errors && (fgv.tipo_usuario.dirty || fgv.tipo_usuario.touched)">
-                        <strong *ngIf="fgv.tipo_usuario.errors.required">
-                            This field is required.
-                        </strong>
-                        <strong *ngIf="fgv.tipo_usuario.errors.minlength">
-                            This field must be at least 3 characters long.
-                        </strong>
-                    </div>
+                    <select class="browser-default" name="tipo de usuario" formControlName="tipo_usuario">
+                        <option value="607a19becdfb20143c1fe06d">admin</option>
+                        <option value="607a1a43cdfb20143c1fe06e" selected>vendedor</option>
+                    </select>
+                
                 </div>
                
                 
