@@ -26,4 +26,14 @@ export class UsuarioService {
       headers: new HttpHeaders({})
     });
   }
+
+  ListarRegistros(): Observable<UsuarioModel[]> {
+    return this.http.get<UsuarioModel[]>(`${this.url}/usuarios`);
+  }
+
+
+  BuscarRegistro(id: number): Observable<UsuarioModel> {
+    return this.http.get<UsuarioModel>(`${this.url}/usuarios/${id}`);
+  }
+
 }

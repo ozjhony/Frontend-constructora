@@ -71,7 +71,7 @@ export class SeguridadService {
       let datosString = JSON.stringify(usuarioModelo);
       localStorage.setItem("session-data", datosString);
       usuarioModelo.isLoggedIn = true;
-      usuarioModelo.isAdmin=true;
+     
       
       
       this.RefrescarDatosSesion(usuarioModelo);

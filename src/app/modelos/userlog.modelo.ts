@@ -11,4 +11,5 @@ export class UserLogModelo{
     isLoggedIn?: boolean = false;
     isAdmin?: boolean = false;
     role?: String;
+    nombre?:String
 }
