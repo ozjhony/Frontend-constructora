@@ -60,7 +60,7 @@ export class RegistrarClienteComponent implements OnInit {
     modelo.correo=correo;
     modelo.celular= celular;
     modelo.direccion= direccion;
-    modelo.ciudadId= ciudadId;
+    modelo.ciudadId= parseInt(ciudadId);
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos) =>{
         alert("Registro almacenado correctamente.");

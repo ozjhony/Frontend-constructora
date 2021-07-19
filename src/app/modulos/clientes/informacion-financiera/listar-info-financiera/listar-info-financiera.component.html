@@ -1,0 +1,64 @@
+<br />
+<a class="waves-effect waves-light btn" routerLink="/clientes/crear-info-financiera"><i class="material-icons left">add</i>Agregar</a>
+
+
+<table class="table responsive-table">
+    <thead>
+
+        <tr>
+            <th>
+                Total ingreso
+            </th>
+
+            <th>
+                cargo
+            </th>
+
+            <th>
+                nombre referencia personal
+            </th>
+
+            <th>
+                cliente id
+            </th>
+
+            <th>
+                Acciones
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let r of listaRegistros | paginate: { itemsPerPage: regPorPagina, currentPage: pagina }">
+            <th>
+                {{r.totalIngreso}}
+            </th>
+            <th>
+                {{r.cargo}}
+            </th>
+            <th>
+                {{r.nombreReferenciaPersonal}}
+            </th>
+            <th>
+                {{r.clienteId}}
+            </th>
+            
+            <th>
+                <a class="waves-effect orange waves-light btn" routerLink="/clientes/editar-info-financiera/{{r.id}}"><i class="material-icons left">edit</i>Modificar</a>
+                &nbsp;&nbsp;
+                <a class="waves-effect red waves-light btn" routerLink="/clientes/eliminar-info-financiera/{{r.id}}"><i class="material-icons left">delete</i>Eliminar</a>
+                
+            </th>
+
+        </tr>
+
+    </tbody>
+</table>
+
+<pagination-controls  (pageChange)="CambioPagina($event)"
+                      previousLabel="Anterior"
+                      nextLabel="Siguiente">
+</pagination-controls>
+
+

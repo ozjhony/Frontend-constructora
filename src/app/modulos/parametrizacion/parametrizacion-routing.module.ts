@@ -19,6 +19,7 @@ import { ListarPaisComponent } from './pais/listar-pais/listar-pais.component';
 import { CrearProyectosComponent } from './proyectos/crear-proyectos/crear-proyectos.component';
 import { EditarProyectosComponent } from './proyectos/editar-proyectos/editar-proyectos.component';
 import { EliminarProyectosComponent } from './proyectos/eliminar-proyectos/eliminar-proyectos.component';
+import { ImagenesProyectosComponent } from './proyectos/imagenes-proyectos/imagenes-proyectos.component';
 import { ListarProyectosComponent } from './proyectos/listar-proyectos/listar-proyectos.component';
 
 const routes: Routes = [
@@ -97,6 +98,9 @@ const routes: Routes = [
   {
     path: 'eliminar-proyectos/:codigo',
     component:EliminarProyectosComponent
+  },{
+    path: 'imagenes-proyectos',
+    component:ImagenesProyectosComponent
   },
   {
     path: 'listar-proyectos',

@@ -23,7 +23,7 @@ export class CrearProyectosComponent implements OnInit {
 
   ngOnInit(): void {
     this.ConstruirFormulario();
-    this.getAllPaises();
+    this.getAllCiudades();
   }
 
   ConstruirFormulario() {
@@ -52,7 +52,7 @@ export class CrearProyectosComponent implements OnInit {
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos) =>{
         alert("Registro almacenado correctamente.");
-        this.router.navigate(["/parametros/listar-ciudad"]);
+        this.router.navigate(["/parametros/listar-proyectos"]);
       },
       (err) =>{
         alert("Error almacenando el registro");
@@ -60,7 +60,7 @@ export class CrearProyectosComponent implements OnInit {
     );
   }
 
-  getAllPaises() {
+  getAllCiudades() {
     this.servicioCiudad.ListarRegistros().subscribe(
       data => {
         this.ListaCiudad = data;

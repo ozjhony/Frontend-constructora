@@ -8,6 +8,11 @@ import { EditarClienteComponent } from './editar-cliente/editar-cliente.componen
 import { ListarClienteComponent } from './listar-cliente/listar-cliente.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImagenesClientesComponent } from './imagenes-clientes/imagenes-clientes.component';
+import { CrearInfoFinancieraComponent } from './informacion-financiera/crear-info-financiera/crear-info-financiera.component';
+import { ListarInfoFinancieraComponent } from './informacion-financiera/listar-info-financiera/listar-info-financiera.component';
+import { EliminarInfoFinancieraComponent } from './informacion-financiera/eliminar-info-financiera/eliminar-info-financiera.component';
+import { EditarInfoFinancieraComponent } from './informacion-financiera/editar-info-financiera/editar-info-financiera.component';
 
 
 @NgModule({
@@ -15,7 +20,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegistrarClienteComponent,
     EliminarClientesComponent,
     EditarClienteComponent,
-    ListarClienteComponent
+    ListarClienteComponent,
+    ImagenesClientesComponent,
+    CrearInfoFinancieraComponent,
+    ListarInfoFinancieraComponent,
+    EliminarInfoFinancieraComponent,
+    EditarInfoFinancieraComponent
   ],
   imports: [
     CommonModule,
