@@ -9,4 +9,6 @@ export class UserLogModelo{
     user?: UsuarioModule;
     tk?: String;
     isLoggedIn?: boolean = false;
+    isAdmin?: boolean = false;
+    role?: String;
 }

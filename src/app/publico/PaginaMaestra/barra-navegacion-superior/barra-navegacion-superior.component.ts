@@ -25,7 +25,7 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
       (datos) => {
         this.isLoggedIn = datos.isLoggedIn;
         this.Usuario=datos.nombre_usuario;
-        console.log(this.Usuario);
+        
       },
       (error) => {
 

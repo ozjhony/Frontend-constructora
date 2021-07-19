@@ -7,10 +7,15 @@
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     <ul class="right hide-on-med-and-down">
       
-      <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
+      
       <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="usuario/registro">Registrar usuario</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="clientes/registrar-cliente">Registrar cliente</a></li>
+
+      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudad">Ciudades</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyectos">Proyectos</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-inmueble">Inmuebles</a></li>
+      <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
       
     </ul>
   </div>
@@ -21,6 +26,12 @@
   <li *ngIf="isLoggedIn"><a routerLink="seguridad/cerrar-sesion">Cerrar Sesión</a></li>
   <li *ngIf="!isLoggedIn"><a routerLink="seguridad/iniciar-sesion">Iniciar Sesión</a></li>
   <li *ngIf="!isLoggedIn"><a routerLink="usuario/registro">Registrarse</a></li>
+
+  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-ciudad">ciudades</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-proyectos">proyectos</a></li>
+  <li *ngIf="isLoggedIn"><a routerLink="parametros/listar-inmueble">inmuebles</a></li>
+
+
 </ul>
 
 

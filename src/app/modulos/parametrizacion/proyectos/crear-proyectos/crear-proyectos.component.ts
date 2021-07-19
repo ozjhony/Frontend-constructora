@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { ProyectoModelo } from 'src/app/modelos/proyecto.modelo';
 import { CiudadService } from 'src/app/services/ciudad.service';
+import { ImagenpService } from 'src/app/services/imagenp.service';
 import { ProyectoService } from 'src/app/services/proyecto.service';
 
 @Component({
@@ -19,11 +20,13 @@ export class CrearProyectosComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private servicioCiudad: CiudadService,
     private servicio: ProyectoService,
-    private router: Router) { }
+    private router: Router,
+    private service: ImagenpService) { }
 
   ngOnInit(): void {
     this.ConstruirFormulario();
     this.getAllCiudades();
+    this.UploadImageFn();
   }
 
   ConstruirFormulario() {
@@ -67,9 +70,34 @@ export class CrearProyectosComponent implements OnInit {
         //setTimeout(initSelect(), 500);
       },
       error => {
-        console.error("Error loading paises");
+        console.error("Error loading ciudades");
       }
     );
+  }
+  UploadImageFn() {
+    if (this.fgValidador.invalid) {
+      
+    } else {
+      const formData = new FormData();
+      formData.append('file', this.ObtenerFgValidador.imagen.value);
+      this.service.UploadProyectoImage(formData).subscribe(
+        data => {
+          this.ObtenerFgValidador.imagen.setValue(data.filename);
+          alert("la imagen fue cargada con exito.");
+          
+        },
+        err => {
+          alert("Error uploading image.");
+        }
+      );
+    }
+  }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.ObtenerFgValidador.imagen.setValue(file);
+    }
   }
 
 

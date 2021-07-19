@@ -44,6 +44,7 @@ export class SeguridadService {
       let datosEnObjeto: UserLogModelo = JSON.parse(datos);
       datosEnObjeto.isLoggedIn = true;
       this.RefrescarDatosSesion(datosEnObjeto);
+      
     }
   }
 
@@ -70,6 +71,9 @@ export class SeguridadService {
       let datosString = JSON.stringify(usuarioModelo);
       localStorage.setItem("session-data", datosString);
       usuarioModelo.isLoggedIn = true;
+      usuarioModelo.isAdmin=true;
+      
+      
       this.RefrescarDatosSesion(usuarioModelo);
       return true;
     }
@@ -77,6 +81,21 @@ export class SeguridadService {
 
   ObtenerDatosSesion() {
     return this.datosDeSesion.asObservable();
+  }
+
+  getSessionData() {
+    let currentSession = localStorage.getItem('session');
+    return currentSession;
+  }
+
+  VerifyRoleInSession(roleId): Boolean {
+    let currentSession = JSON.parse(this.getSessionData());
+    return (currentSession.tipoUsuarioId == roleId);
+  }
+
+  sessionExist(): Boolean {
+    let currentSession = this.getSessionData();
+    return (currentSession) ? true : false;
   }
 
   ObtenerToken() {
@@ -112,5 +131,29 @@ export class SeguridadService {
     let datos = localStorage.removeItem("session-data");
     this.RefrescarDatosSesion(new UserLogModelo());
   }
+
+ /*  DefinirRol(modelo: UserLogModelo) {
+    let datos = localStorage.getItem("session-data");
+    if (datos) {
+      let rol: UserLogModelo = JSON.parse(datos);
+      
+      switch (String(rol.tipoUsuarioId)) {
+        case "607a19becdfb20143c1fe06d":
+          alert("Admin")
+          modelo.isAdmin = true;
+          return true;
+          break;
+        case "607a1a43cdfb20143c1fe06e":
+          alert("Vendedor")
+          modelo.isAdmin = false;
+          return true;
+          break;
+        default:
+          return false;
+      }
+    } else {
+      return false;
+    }
+  } */
 
 }

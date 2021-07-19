@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent } from './publico/home/default/default.component';
+import {ValidadorSesionGuard} from '../app/guardianes/validador-sesion.guard';
 
 const routes: Routes = [
   
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {
     path:'parametros',
-    loadChildren:()=>import('./modulos/parametrizacion/parametrizacion.module').then(x=>x.ParametrizacionModule)
+    loadChildren:()=>import('./modulos/parametrizacion/parametrizacion.module').then(x=>x.ParametrizacionModule),
+    canActivate:[ValidadorSesionGuard]
   },
   {
     path:'usuario',
@@ -26,7 +28,8 @@ const routes: Routes = [
   },
   {
     path:'clientes',
-    loadChildren:()=>import('./modulos/clientes/clientes.module').then(x=>x.ClientesModule)
+    loadChildren:()=>import('./modulos/clientes/clientes.module').then(x=>x.ClientesModule),
+    canActivate:[ValidadorSesionGuard]
   },
   //ultimo
   {

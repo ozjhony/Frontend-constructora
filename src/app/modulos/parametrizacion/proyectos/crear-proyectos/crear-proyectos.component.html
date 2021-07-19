@@ -18,12 +18,42 @@
             </div>
         </div>
 
-         <div class="row">
+        <div class="row">
+            <div class="input-field col s12">
+                <select class="browser-default" formControlName="ciudadId">
+                    <option *ngFor="let ciudad of ListaCiudad" type="number" value='{{ciudad.codigo}}'>{{ciudad.nombre}}</option>
+                </select>
+            </div>
+        </div>
+
+         <!-- <div class="row">
             <div class="input-field col s12">
                 <input formControlName="imagen" type="file" id="seleccionArchivos" accept="image/*">
                 <img id="imagenPrevisualizacion">
             </div>
-        </div> 
+        </div>  -->
+        <div class="row">
+            <div class="col s6 m6">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>Imagen</span>
+                        <input type="file" (change)="onFileSelect($event)">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <input type="hidden" formControlName="imagen" />
+            </div>
+            <div class="input-field col s3">
+                <button class="btn waves-effect waves-light" (click)="UploadImageFn()" type="button"
+                    name="action">Upload
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </div>
+
+
         
         <br>
         <div class="row">
