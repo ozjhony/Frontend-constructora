@@ -29,6 +29,8 @@ export class EditarInmuebleComponent implements OnInit {
       valor: ['', [Validators.required]],
       codigo: ['', [Validators.required]],
       identificador: ['', [Validators.required]],
+      vendidos:['',[Validators.required]],
+      solicitado:['',[Validators.required]]
       
     });
   }
@@ -49,6 +51,8 @@ export class EditarInmuebleComponent implements OnInit {
         this.ObtenerFgValidador.bloqueId.setValue(datos.bloqueId);
         this.ObtenerFgValidador.codigo.setValue(datos.codigo);
         this.ObtenerFgValidador.identificador.setValue(datos.identificador);
+        this.ObtenerFgValidador.vendidos.setValue(datos.vendidos);
+        this.ObtenerFgValidador.solicitado.setValue(datos.solicitado);
       
       },
       (err) => {
@@ -78,11 +82,15 @@ export class EditarInmuebleComponent implements OnInit {
     let bloqueId = this.ObtenerFgValidador.bloqueId.value;
     let codigo = this.ObtenerFgValidador.codigo.value;
     let identificador = this.ObtenerFgValidador.identificador.value;
+    let vendidos = this.ObtenerFgValidador.vendidos.value;
+    let solicitado = this.ObtenerFgValidador.solicitado.value;
     let modelo: InmuebleModelo = new InmuebleModelo();
     modelo.valor = parseInt(valor);
     modelo.bloqueId=parseInt(bloqueId);
     modelo.codigo=codigo;
     modelo.identificador = identificador;
+    modelo.vendidos=vendidos;
+    modelo.solicitado = solicitado;
 
    
     console.log(modelo.valor);

@@ -10,6 +10,22 @@
                 <input formControlName="valor" id="nombre" type="number" class="validate">
                 <label class="active" for="nombre">valor</label>
             </div>
+
+            <div class="input-field col s12">
+                <select name="select" class="browser-default" formControlName="solicitado">
+                    <option value="1">No solicitado</option>
+                    <option value="2" selected>Si solicitado</option>
+                  </select>
+            </div>
+
+            <div class="input-field col s12">
+                <select name="select" class="browser-default" formControlName="vendidos">
+                    <option value="aceptado">disponible</option>
+                    <option value="estudio" selected>Vendido</option>
+                  </select>
+            </div>
+
+
            
             <div class="input-field col s12">
                  <select class="browser-default" formControlName="bloqueId">

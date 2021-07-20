@@ -25,7 +25,7 @@ export class IniciarSesionComponent implements OnInit {
 
   ConstruirFormulario() {
      this.fgValidador = this.fb.group({
-     nombre_usuario: ['alejandrojpg1996@gmail.com', [Validators.required, Validators.email]],
+     nombre_usuario: ['jhony.1701521539@ucaldas.edu.co', [Validators.required, Validators.email]],
      clave: ['', [Validators.required, Validators.min(3)]]
       });
    }
@@ -41,10 +41,10 @@ export class IniciarSesionComponent implements OnInit {
     } else {
       let nombre_usuario = this.ObtenerFgvalidador.nombre_usuario.value;
       let clave = this.ObtenerFgvalidador.clave.value;
-      //let claveCifrada = crypto.MD5(clave).toString();
+      let claveCifrada = crypto.MD5(clave).toString();
       let modelo = new UserLogModelo();
       modelo.nombre_usuario = nombre_usuario;
-      modelo.clave = clave;
+      modelo.clave = claveCifrada;
       this.servicioSeguridad.VerificarUsuario(modelo).subscribe(
        (datos: UserLogModelo) => {
             this.servicioSeguridad.AlmacenarDatosSesionEnLocal(datos);

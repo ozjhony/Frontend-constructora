@@ -1,0 +1,43 @@
+<div class="row">
+    <form class="col s12"  [formGroup]="fgValidador" (ngSubmit)="ModificarRegistro()" >
+        <input type="hidden" formControlName="codigo" />
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="fechaSolicitud" id="m" type="date" class="validate">
+                <label for="m">fecha solicitud</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="ofertaEconomica" id="k" type="number" class="validate">
+                <label for="k">oferta economica</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input formControlName="clienteId" id="clienteId" type="number" class="validate">
+                <label for="clienteId">clienteId</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select name="select" class="browser-default" formControlName="estadoSolicitud">
+                    <option value="aceptado">Aceptado</option>
+                    <option value="estudio" selected>En estudio</option>
+                    <option value="rechazado">Rechazado</option>
+                  </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <button [disabled]="ObtenerFgValidador.ofertaEconomica.errors" class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                    <i class="material-icons right">save</i>
+                </button>
+                &nbsp;&nbsp;
+                <a class="waves-effect red waves-light btn" routerLink="/solicitud/listar-solicitud"><i class="material-icons left">cancel</i>Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>
+

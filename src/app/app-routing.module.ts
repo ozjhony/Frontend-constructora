@@ -31,6 +31,11 @@ const routes: Routes = [
     loadChildren:()=>import('./modulos/clientes/clientes.module').then(x=>x.ClientesModule),
     canActivate:[ValidadorSesionGuard]
   },
+  {
+    path:'solicitud',
+    loadChildren:()=>import('./modulos/solicitudes/solicitudes.module').then(x=>x.SolicitudesModule),
+    canActivate:[ValidadorSesionGuard]
+  },
   //ultimo
   {
     path:'**',

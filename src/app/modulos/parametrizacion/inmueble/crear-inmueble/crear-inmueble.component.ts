@@ -30,7 +30,9 @@ export class CrearInmuebleComponent implements OnInit {
     this.fgValidador = this.fb.group({
       identificador: ['', [Validators.required]],
       valor: ['', [Validators.required]],
-      bloqueId:['',[Validators.required]]
+      bloqueId:['',[Validators.required]],
+      vendidos:['',[Validators.required]],
+      solicitado:['',[Validators.required]]
     });
   }
 
@@ -42,10 +44,14 @@ export class CrearInmuebleComponent implements OnInit {
     let identificador = this.ObtenerFgValidador.identificador.value;
     let valor = this.ObtenerFgValidador.valor.value;
     let bloqueId = this.ObtenerFgValidador.bloqueId.value;
+    let vendidos = this.ObtenerFgValidador.vendidos.value;
+    let solicitado = this.ObtenerFgValidador.solicitado.value;
     let modelo: InmuebleModelo = new InmuebleModelo();
     modelo.identificador = identificador;
     modelo.valor=parseInt(valor);
     modelo.bloqueId=parseInt(bloqueId);
+    modelo.vendidos=parseInt(vendidos);
+    modelo.solicitado=parseInt(solicitado);
     this.servicio.AlmacenarRegistro(modelo).subscribe(
       (datos) =>{
         alert("Registro almacenado correctamente.");
