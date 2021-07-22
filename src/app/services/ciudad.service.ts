@@ -23,12 +23,12 @@ export class CiudadService {
   }
 
   ListarRegistros(): Observable<CiudadModelo[]> {
-    return this.http.get<CiudadModelo[]>(`${this.url}/ciudades`);
+    return this.http.get<CiudadModelo[]>(`${this.url}/ciudades/${this.filter}`);
   }
 
 
   BuscarRegistro(codigo: number): Observable<CiudadModelo> {
-    return this.http.get<CiudadModelo>(`${this.url}/ciudades/${codigo}`);
+    return this.http.get<CiudadModelo>(`${this.url}/ciudades/${codigo}/${this.filter}`);
   }
 
   AlmacenarRegistro(modelo: CiudadModelo): Observable<CiudadModelo> {

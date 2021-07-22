@@ -1,0 +1,17 @@
+
+<div class="row">
+    <div *ngFor="let p of proyectoList" class="col s4 m6">
+        <div class="card">
+            <div class="card-image">
+                <img src="http://localhost:3000/archivo/3/{{p.imagen}}" class="productImage" />
+                <span class="card-title">Nombre: {{p.nombre}}</span>
+            </div>
+            <div class="card-content">
+                <button class="btn waves-effect waves-light" (click)="OpenDetails(p.codigo)" type="button"
+                    name="action">Details
+                    <i class="material-icons right">pageview</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

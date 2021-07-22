@@ -12,7 +12,7 @@ export class ProyectoService {
 
   url: String = DatosGenerales.url;
   token?: String = "";
-  filter: String = '?filter={"include":[{"relation":"pais"}]}';
+  filter: String = '?filter={"include":[{"relation":"ciudad"}]}';
   
   
 
@@ -23,12 +23,12 @@ export class ProyectoService {
   }
 
   ListarRegistros(): Observable<ProyectoModelo[]> {
-    return this.http.get<ProyectoModelo[]>(`${this.url}/proyectos`);
+    return this.http.get<ProyectoModelo[]>(`${this.url}/proyectos/${this.filter}`);
   }
 
 
   BuscarRegistro(codigo: number): Observable<ProyectoModelo> {
-    return this.http.get<ProyectoModelo>(`${this.url}/proyectos/${codigo}`);
+    return this.http.get<ProyectoModelo>(`${this.url}/proyectos/${codigo}/${this.filter}`);
   }
 
   AlmacenarRegistro(modelo: ProyectoModelo): Observable<ProyectoModelo> {

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CiudadModelo } from 'src/app/modelos/ciudad.modelo';
 import { ProyectoModelo } from 'src/app/modelos/proyecto.modelo';
 import { CiudadService } from 'src/app/services/ciudad.service';
+import { ImagenpService } from 'src/app/services/imagenp.service';
 import { ProyectoService } from 'src/app/services/proyecto.service';
 
 @Component({
@@ -20,7 +21,8 @@ export class EditarProyectosComponent implements OnInit {
     private servicio: ProyectoService,
     private router: Router,
     private route: ActivatedRoute,
-    private servicioCiudad:CiudadService) {
+    private servicioCiudad:CiudadService,
+    private service: ImagenpService) {
   }
 
   ConstruirFormulario() {
@@ -96,6 +98,32 @@ export class EditarProyectosComponent implements OnInit {
         alert("Error modificando el registro");
       }
     );
+  }
+
+  UploadImageFn() {
+    if (this.fgValidador.invalid) {
+      
+    } else {
+      const formData = new FormData();
+      formData.append('file', this.ObtenerFgValidador.imagen.value);
+      this.service.UploadProyectoImage(formData).subscribe(
+        data => {
+          this.ObtenerFgValidador.imagen.setValue(data.filename);
+          alert("la imagen fue cargada con exito.");
+          
+        },
+        err => {
+          alert("Error uploading image.");
+        }
+      );
+    }
+  }
+
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.ObtenerFgValidador.imagen.setValue(file);
+    }
   }
 
 }

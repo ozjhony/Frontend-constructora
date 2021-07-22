@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent } from './publico/home/default/default.component';
 import {ValidadorSesionGuard} from '../app/guardianes/validador-sesion.guard';
+import { DetallespComponent } from './publico/detallesp/detallesp.component';
 
 const routes: Routes = [
   
@@ -12,6 +13,10 @@ const routes: Routes = [
    path:'',
    pathMatch:'full',
    redirectTo: 'home'
+  },
+  {
+    path: 'detalles-producto/:codigo',
+    component: DetallespComponent
   },
   {
     path:'seguridad',

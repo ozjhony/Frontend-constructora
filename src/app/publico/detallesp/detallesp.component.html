@@ -1,0 +1,43 @@
+
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                Nombre
+            </td>
+            <td>
+                Descripcion
+            </td>
+            <td>
+                imagen
+            </td>
+            <td>
+                ciudadId
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                {{p.nombre}}
+            </td>
+            <td>
+                {{p.descripcion}}
+            </td>
+            <td>
+                <div class="card-image">
+                    <img src="http://localhost:3000/archivo/3/{{p.imagen}}" class="proImage" />       
+                </div>
+            </td>
+            <td>
+                {{p.ciudadId}}
+            </td>
+            
+        </tr>
+    </tbody>
+</table>
+
+<button (click)="Volver()" class="btn red waves-effect waves-light" type="button">Volver al inicio
+    <i class="material-icons left"></i>
+</button>

@@ -11,7 +11,7 @@ import { SeguridadService } from './seguridad.service';
 export class InmuebleService {
   url: String = DatosGenerales.url;
   token?: String = "";
-  filter: String = '?filter={"include":[{"relation":"proyectos"}]}';
+  filter: String = '?filter={"include":[{"relation":"bloque"}]}';
   
   
 
@@ -22,12 +22,12 @@ export class InmuebleService {
   }
 
   ListarRegistros(): Observable<InmuebleModelo[]> {
-    return this.http.get<InmuebleModelo[]>(`${this.url}/inmuebles`);
+    return this.http.get<InmuebleModelo[]>(`${this.url}/inmuebles/${this.filter}`);
   }
 
 
   BuscarRegistro(codigo: number): Observable<InmuebleModelo> {
-    return this.http.get<InmuebleModelo>(`${this.url}/inmuebles/${codigo}`);
+    return this.http.get<InmuebleModelo>(`${this.url}/inmuebles/${codigo}/${this.filter}`);
   }
 
   AlmacenarRegistro(modelo: InmuebleModelo): Observable<InmuebleModelo> {

@@ -11,7 +11,7 @@ import { SeguridadService } from './seguridad.service';
 export class BloqueService {
   url: String = DatosGenerales.url;
   token?: String = "";
-  filter: String = '?filter={"include":[{"relation":"proyectos"}]}';
+  filter: String = '?filter={"include":[{"relation":"proyecto"}]}';
   
   
 
@@ -22,12 +22,12 @@ export class BloqueService {
   }
 
   ListarRegistros(): Observable<BloqueModelo[]> {
-    return this.http.get<BloqueModelo[]>(`${this.url}/bloques`);
+    return this.http.get<BloqueModelo[]>(`${this.url}/bloques/${this.filter}`);
   }
 
 
   BuscarRegistro(codigo: number): Observable<BloqueModelo> {
-    return this.http.get<BloqueModelo>(`${this.url}/bloques/${codigo}`);
+    return this.http.get<BloqueModelo>(`${this.url}/bloques/${codigo}/${this.filter}`);
   }
 
   AlmacenarRegistro(modelo: BloqueModelo): Observable<BloqueModelo> {

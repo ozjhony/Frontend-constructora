@@ -9,6 +9,9 @@ import { PieDePaginaComponent } from './publico/PaginaMaestra/pie-de-pagina/pie-
 import { DefaultComponent } from './publico/home/default/default.component';
 import { Error404Component } from './publico/error404/error404.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LppComponent } from './publico/lpp/lpp.component';
+import { DetallespComponent } from './publico/detallesp/detallesp.component';
+
 
 
 @NgModule({
@@ -18,7 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     MenuLateralComponent,
     PieDePaginaComponent,
     DefaultComponent,
-    Error404Component
+    Error404Component,
+    LppComponent,
+    DetallespComponent
   ],
   imports: [
     BrowserModule,
